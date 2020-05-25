@@ -93,7 +93,7 @@ function tunnel(configArgs, callback) {
 
         server.listen(config.localPort, config.localHost, function (error) {
             callback(error, server);
-        });
+        }).on('error', callback);
     } catch (e) {
         server = new events.EventEmitter();
         setImmediate(function () {
